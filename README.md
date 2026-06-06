@@ -65,6 +65,23 @@ employee-management-system/
 
 ---
 
+## 📋 Prerequisites
+
+Before running the application on any desktop, ensure you have the following installed:
+
+### For Docker Compose Deployment (Recommended)
+*   **Git** (to clone the repository)
+*   **Docker Desktop** (includes Docker Engine, Docker CLI, and Docker Compose)
+
+### For Kubernetes Deployment
+*   **Kubernetes Cluster** (Docker Desktop built-in Kubernetes or Minikube)
+*   **kubectl CLI** (to manage resource deployments)
+
+> [!NOTE]
+> You do **not** need to install Node.js, npm, Nginx, or MySQL locally on the host machine. All runtime dependencies are packaged and run automatically inside their virtual Docker containers.
+
+---
+
 ## 🚀 Setup & Launch Instructions
 
 ### Option 1: Multi-Container Launch via Docker Compose (Easiest)
