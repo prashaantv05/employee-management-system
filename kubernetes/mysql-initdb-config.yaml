@@ -1,0 +1,34 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-initdb-config
+  namespace: ems
+data:
+  schema.sql: |
+    CREATE DATABASE IF NOT EXISTS employee_db;
+    USE employee_db;
+
+    CREATE TABLE IF NOT EXISTS employees (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        employee_id VARCHAR(20) NOT NULL UNIQUE,
+        name VARCHAR(100) NOT NULL,
+        email VARCHAR(100) NOT NULL UNIQUE,
+        phone VARCHAR(20) NOT NULL,
+        department VARCHAR(100) NOT NULL,
+        designation VARCHAR(100) NOT NULL,
+        salary DECIMAL(12, 2) NOT NULL,
+        joining_date DATE NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+    INSERT INTO employees (employee_id, name, email, phone, department, designation, salary, joining_date)
+    VALUES
+    ('EMP001', 'Arjun Sharma', 'arjun.sharma@example.com', '9876543210', 'Engineering', 'Senior Software Engineer', 95000.00, '2022-03-15'),
+    ('EMP002', 'Priya Patel', 'priya.patel@example.com', '8765432109', 'Human Resources', 'HR Manager', 75000.00, '2021-06-01'),
+    ('EMP003', 'Rahul Verma', 'rahul.verma@example.com', '7654321098', 'Marketing', 'Digital Marketing Specialist', 60000.00, '2023-01-10'),
+    ('EMP004', 'Sneha Reddy', 'sneha.reddy@example.com', '6543210987', 'Engineering', 'QA Engineer', 65000.00, '2023-08-22'),
+    ('EMP005', 'Vikram Singh', 'vikram.singh@example.com', '5432109876', 'Finance', 'Financial Analyst', 80000.00, '2020-11-05'),
+    ('EMP006', 'Anjali Gupta', 'anjali.gupta@example.com', '9988776655', 'Sales', 'Account Executive', 55000.00, '2024-02-18'),
+    ('EMP007', 'Amit Kumar', 'amit.kumar@example.com', '8877665544', 'Engineering', 'Tech Lead', 130000.00, '2019-05-12'),
+    ('EMP008', 'Meera Nair', 'meera.nair@example.com', '7766554433', 'Human Resources', 'HR Assistant', 45000.00, '2024-05-01');
